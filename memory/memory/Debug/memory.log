@@ -1,2 +1,5 @@
 ﻿  main.c
-  memory.vcxproj -> C:\Users\xueql\Desktop\xbl 笔记\code\memory\Debug\memory.exe
+C:\Users\YIDA\Desktop\csBasicUseC\memory\memory\main.c(13,18): warning C4013: “createMemoryData”未定义；假设外部返回 int
+C:\Users\YIDA\Desktop\csBasicUseC\memory\memory\main.c(16,40): warning C4020: “myController”: 实参太多
+C:\Users\YIDA\Desktop\csBasicUseC\memory\memory\main.c(17,40): warning C4020: “myController”: 实参太多
+  memory.vcxproj -> C:\Users\YIDA\Desktop\csBasicUseC\memory\Debug\memory.exe
