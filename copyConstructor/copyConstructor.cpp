@@ -1,4 +1,4 @@
-#include <iostream>
+Ôªø#include <iostream>
 using namespace std;
 
 
@@ -19,6 +19,14 @@ public:
 	CDataBuff(size_t nSize) {
 		m_nSize = nSize;
 	}
+
+	// Êã∑Ë¥ùÊûÑÈÄ†ÁöÑ‰ª£Á†Å
+	CDataBuff(CDataBuff & obj) {
+		m_pBuf = new char[obj.m_nSize];
+		memcpy(m_pBuf, obj.m_pBuf, obj.m_nSize);
+		m_nSize = obj.m_nSize;
+		cout << "CDataBuff & obj" << endl;
+	}
 	~CDataBuff() {
 		if (m_pBuf != nullptr) {
 			cout << "CDataBuf::~CDataBuf" << endl;
@@ -29,16 +37,6 @@ public:
 	}
 
 	void SetData(char* pData, size_t nSize) {
-
-		/*1. ≈–∂œ÷∏’Î «∑ÒŒ™ø’,√ª”–≥ı ºªØ£¨æ÷≤ø±‰¡ø≥ı ºªØccc£¨Œ™ ≤√¥£ø
-		2. ≤ª≈–∂œƒ⁄¥Ê–π¬©*/
-
-		/*if (m_pBuf != nullptr) {
-			free(m_pBuf);
-			m_pBuf = nullptr;
-		}
-		
-		m_pBuf = (char*)malloc(nSize);*/
 
 		memcpy(m_pBuf, pData, nSize);
 		m_nSize = nSize;
@@ -53,21 +51,12 @@ private:
 	size_t m_nSize;
 };
 
+void Foo(CDataBuff buf){
+	cout << buf.GetData() << endl;
+}
 
 int main(int argc, char* argv[]) {
-
-	
-	char ary[] = { "hello" };
-	
-	CDataBuff buf(ary, sizeof(ary));
-	
-	CDataBuff buf1{ ary, sizeof(ary) };
-	CDataBuff buf2{sizeof(ary) };
-
-
-	char ary1[] = { "hello" };
-
-	buf.SetData(ary1, sizeof(ary1));
-	
-
+	CDataBuff buf0((char*)"hello", 6);
+	Foo(buf0);
+	return 0;
 }
