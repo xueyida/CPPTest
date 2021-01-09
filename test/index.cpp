@@ -2,52 +2,47 @@
 using namespace std;
 
 
-
-class CDataBuff {
+class CA {
 public:
-	CDataBuff() {
-		std::cout << "CDataBuf::CDataBuff" << std::endl;
-		m_pBuf = nullptr;
-		m_nSize = 0;
-	}
-	CDataBuff(char* pData, size_t nSize) {
-		std::cout << "CDataBuf::CDataBuff(char* pData, size_t nSIze)" << std::endl;
-		m_pBuf = (char*)malloc(nSize);
-		memcpy(m_pBuf, pData, nSize);
-		m_nSize = nSize;
-	}
-	CDataBuff(size_t nSize) {
-		m_nSize = nSize;
-	}
-	~CDataBuff() {
-		if (m_pBuf != nullptr) {
-			cout << "CDataBuf::~CDataBuf" << endl;
-			free(m_pBuf);
-			m_pBuf = nullptr;
-			m_nSize = 0;
-		}
+	void FooA() {
+		cout << "CA::Foo" << endl;
 	}
 
-	void SetData(char* pData, size_t nSize) {
-
-		memcpy(m_pBuf, pData, nSize);
-		m_nSize = nSize;
-	}
-
+	int a = 2;
 
 private:
-	char* m_pBuf;
-	size_t m_nSize;
+	
+};
+
+
+class CD {
+public:
+	void FooD() {
+		cout << "CD::FooD" << endl;
+	}
+
+
+	int a = 2;
+
+private:
+
+};
+
+
+
+class CB : virtual public CA {
+public:
+	 void FooB() {
+		cout << "CB::Foo" << endl;
+	}
+	
+	int b = 5;
 };
 
 
 int main(int argc, char* argv[]) {
+	CB* p = new CB;
 
-
-	char ary[] = { "hello" };
-
-	CDataBuff buf(ary, sizeof(ary));
-
-	CDataBuff buf1{ ary, sizeof(ary) };
+	return 0;
 
 }
