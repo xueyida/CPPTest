@@ -2,46 +2,37 @@
 using namespace std;
 
 
-class CA {
+
+class CFoo
+{
 public:
-	void FooA() {
-		cout << "CA::Foo" << endl;
+	CFoo() {
+		cout << "CFoo::CFoo" << endl;
 	}
-
-	int a = 2;
-
-private:
-	
+	~CFoo() {
+		cout << "CFoo::~CFoo" << endl;
+	}
 };
 
-
-class CD {
+class CPtr {
 public:
-	void FooD() {
-		cout << "CD::FooD" << endl;
+	CPtr(CFoo* p) :m_p(p) {}
+	~CPtr()
+	{
+		if (m_p != nullptr) {
+			delete m_p;
+			m_p = nullptr;
+		}
 	}
 
-
-	int a = 2;
-
-private:
+	CFoo* m_p;
 
 };
-
-
-
-class CB : virtual public CA {
-public:
-	 void FooB() {
-		cout << "CB::Foo" << endl;
-	}
-	
-	int b = 5;
-};
-
 
 int main(int argc, char* argv[]) {
-	CB* p = new CB;
+	
+	
+	 
 
 	return 0;
 
